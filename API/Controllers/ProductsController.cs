@@ -18,7 +18,7 @@ namespace API.Controllers
         {
             this.repo = repo;
         }
-        
+
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
@@ -33,6 +33,18 @@ namespace API.Controllers
             var product = await repo.GetProductByIdAsync(id);
 
             return product;
+        }
+
+        [HttpGet("brands")]
+        public async Task<ActionResult<List<ProductBrand>>> GetProductBrands()
+        {
+            return Ok(await repo.GetProductBrandsAsync());
+        }
+
+        [HttpGet("types")]
+        public async Task<ActionResult<List<ProductType>>> GetProductTypes()
+        {
+            return Ok(await repo.GetProductTypesAsync());
         }
     }
 }

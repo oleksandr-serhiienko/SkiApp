@@ -17,14 +17,40 @@ namespace Infrastructure.Data
             this.context = context;
         }
 
+        public async Task<ProductBrand> GetProductBrandByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
+        {
+            return await context.ProductBrands.ToListAsync();
+        }
+
         public async Task<Product> GetProductByIdAsync(int id)
         {
-            return await context.Products.FindAsync(id);
+            return await context.Products
+                                .Include(p => p.ProductType)
+                                .Include(p => p.ProductBrand)
+                                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IReadOnlyList<Product>> GetProductsAsync()
         {
-            return await context.Products.ToListAsync();
+            return await context.Products
+                                .Include(p => p.ProductType)
+                                .Include(p => p.ProductBrand)
+                                .ToListAsync();
+        }
+
+        public Task<ProductType> GetProductTypeByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
+        {
+            return await context.ProductTypes.ToListAsync();
         }
     }
 }
