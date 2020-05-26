@@ -19,5 +19,9 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="www.root\" />
+  </ItemGroup>
+
 
 </Project>
