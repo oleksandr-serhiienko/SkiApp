@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Core.Specifications
@@ -22,5 +23,13 @@ namespace Core.Specifications
         public int? TypeId { get; set; }
         
         public string Sort { get; set; }
+
+        private string serach;
+
+        public string Search
+        {
+            get => serach;
+            set => serach = value.ToLower();
+        }
     }
 }
