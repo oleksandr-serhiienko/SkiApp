@@ -34,7 +34,7 @@ namespace API.Controllers
         {
             var thing = context.Products.Find(42);
 
-            var thingToReturen = thing.ToString();
+            var thingToReturen = thing?.ToString();
             
             return Ok();
         }
