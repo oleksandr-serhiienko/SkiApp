@@ -15,9 +15,11 @@ export class AppComponent implements OnInit {
     
   ngOnInit(): void {
     this.http.get('https://localhost:5001/api/products?pageSize=50').subscribe((response: any) => {
-      this.products = response.data;
+      console.log(response);
+      this.products = response.date;
     }, error => {
       console.log(error);
     });
-    }
+  }
 }
+
